@@ -4,9 +4,28 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 let password1 = document.getElementById("password1")
 let password2 = document.getElementById("password2")
 
+function getValue() {
+    // Get the input element
+    let input = document.getElementById("myinput")
+  
+    // Get the value of the input
+    let value = input.value
+
+    if (value > 20) {
+        document.getElementById("caution").textContent = "The password length cannot be more than 20 characters"
+    } else {
+        // Display the value
+        document.getElementById("caution").textContent = ""
+        return value
+        // or you can use alert(value) to display it in an alert box
+    }
+}
+
+
 function randomPassword() {
+    let passwordLength = getValue()
     let randomGenerated = ""
-    for (i = 0; i < 15; i++) {
+    for (i = 0; i < passwordLength; i++) {
         let randomNumber = Math.floor(Math.random() * characters.length)
         randomGenerated += characters[randomNumber]
     }
